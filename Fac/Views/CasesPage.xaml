@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fac.Views.CasesPage"
+              Title="{Binding Title}"
+             x:Name="BrowseCasesPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddCase_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="add.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding Cases}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadCasesCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnCaseSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="22"></RowDefinition>
+                                <RowDefinition Height="18"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="80"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <BoxView Grid.Row="0" Grid.RowSpan="3" Grid.Column="0">
+                                <BoxView.Triggers>
+                                    <DataTrigger TargetType="BoxView" Binding="{Binding Status}" Value="0">
+                                        <Setter Property="Color" Value="Blue" />
+                                    </DataTrigger>
+                                </BoxView.Triggers>
+                            </BoxView>
+
+                            <Label Grid.Row="1" FontSize="Small" YAlign="End" Grid.Column="1" 
+                                   Text="{Binding SubCategoryName}" LineBreakMode="NoWrap">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding Status}"
+                                                 Value="0">
+                                        <Setter Property="TextColor" Value="Blue" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+
+                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Font="Large" Text="{Binding CategoryName}" />
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Message}" 
+                                   Font="Small" LineBreakMode="TailTruncation" />
+
+
+                            <Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Source="{Binding ImgSrc}" Aspect="AspectFill" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="OnImageResultTapped"
+                                        NumberOfTapsRequired="1"  />
+                                </Image.GestureRecognizers>
+                            </Image>
+                                <!--<Image Grid.Row="2" Grid.Column="0"
+                                    HeightRequest="30"
+                                    WidthRequest="30">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image"
+                                                        Binding="{Binding Status}"
+                                                        Value="0">
+                                            <Setter Property="Source" Value="envelopeblue.jpg" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>-->
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

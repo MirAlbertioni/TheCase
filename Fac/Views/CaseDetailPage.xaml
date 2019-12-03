@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fac.Views.CaseDetailPage"
+             Title="{Binding Title}">
+    <!--<StackLayout Spacing="20" Padding="15">
+        <Image x:Name="CaseImage" />
+        <Label Text="{Binding Case.SiteRefId}" FontSize="Small"/>
+        <Label Text="{Binding Case.CaseId}" FontSize="Small"/>
+        <Label Text="{Binding Case.Header}" FontSize="Small"/>
+        <Label Text="{Binding Case.Text}" FontSize="Small"/>
+        <Label Text="{Binding Case.Sender}" FontSize="Small"/>
+    </StackLayout>-->
+
+
+    <Grid
+        VerticalOptions="Fill"
+        HorizontalOptions ="Fill"
+        Padding="5,10,5,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="NameOfStatus" Text="Pågående" FontSize="40" FontAttributes="Italic" 
+               Rotation="45" XAlign="Center" YAlign="Center"
+               Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="8" Grid.RowSpan="13" 
+               Opacity="0.2" TextColor="SkyBlue" />
+
+        <Label Text="Inloggad:" FontSize="Micro" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="End" />
+        <Label x:Name="UserName" Text="Mir Albertioni" FontSize="Micro" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" />
+        <Label Text="Butik" FontSize="Micro" Grid.Row="0" FontAttributes="Bold" Grid.Column="2" HorizontalTextAlignment="End" />
+        <Label x:Name="StoreName" Text="Anders butik" FontSize="Micro" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" />
+        <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Color="Black"/>
+
+        <Label Text="{Binding Case.CategoryName}" Grid.Row="2" Grid.Column="0" FontSize="Medium" Grid.ColumnSpan="2"/>
+        <Label Text="{Binding Case.SubCategoryName}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium"/>
+
+        <Label Text="Lastbärar-ID" FontSize="Small" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
+        <BoxView Color="Black" Opacity=".1" HeightRequest="1" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4"/>
+        <Label Text="{Binding Case.FreightCarrierId}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" FontSize="Medium"/>
+
+        <Label Text="OrderNr..." VerticalOptions="End" FontSize="Small" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" />
+        <BoxView Color="Black" Opacity=".1" HeightRequest="1" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4"/>
+        <Label Text="{Binding Case.OrderNumber}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" FontSize="Medium"/>
+
+
+        <!--<ScrollView Grid.Row="9" Grid.Column="0">-->
+            <BoxView Color="Black" Opacity=".1" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" />
+            <Label Text="{Binding Case.Message}" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" FontSize="Small" />
+        <!--</ScrollView>-->
+
+        <Label Text="{Binding Case.SiteRefId}" Grid.Row="10" FontSize="Small"/>
+        <Label Text="{Binding Case.Sender}" Grid.Row="11" FontSize="Small"/>
+
+        <Image x:Name="CaseImage" Grid.Row="12"  HeightRequest="100" HorizontalOptions="Center" Grid.Column="0" Grid.ColumnSpan="6" >
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                Tapped="OnImageNameTapped"
+                NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <!--<Switch Grid.Row="13" Grid.Column="0" />
+        <Label Grid.Row="13" Grid.Column="1" Text="Mark as read" VerticalOptions="Center" />-->
+
+    </Grid>
+</ContentPage>
