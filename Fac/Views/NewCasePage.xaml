@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fac.Views.NewCasePage"
+             Title="New Case"
+             BackgroundColor="White" >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="cancel.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="save.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Grid
+        VerticalOptions="Fill"
+        HorizontalOptions ="Fill"
+        Padding="5,10,5,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Inloggad:" FontSize="Micro" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="End" />
+            <Label x:Name="UserName" Text="Mir Albertioni" FontSize="Micro" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" />
+
+            <Label Text="Kategori" FontSize="Small" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalTextAlignment="Center"/>
+            <Picker Title="Kategori"
+              Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" 
+              ItemsSource="{Binding Categories}"
+              ItemDisplayBinding="{Binding CategoryName}"
+              SelectedIndexChanged="CategoryIndexChanged"
+              SelectedItem="{Binding CategoryId}">
+            </Picker>
+
+            <Label Text="Underrubrik" FontSize="Small" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalTextAlignment="Center" />
+            <Picker Title="Underrubrik"
+              Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4"
+              ItemsSource="{Binding SubCatPerCat}"
+              ItemDisplayBinding="{Binding SubCategoryName}"
+              SelectedIndexChanged="SubCategoryIndexChanged"
+              SelectedItem="{Binding SubCategoryId}">
+            </Picker>
+
+            <!--<Label Text="Lastbärar-ID" FontSize="Small" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" />
+            <BoxView Color="Black" Opacity=".1" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"/>
+            <Entry x:Name="FreightCarrier" FontSize="Small" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" />
+            <Image Source="barcode.png" Grid.Row="4" Grid.Column="4" HorizontalOptions="Fill"
+             Grid.ColumnSpan="2" HeightRequest="30" WidthRequest="30" />
+
+            <Label Text="OrderNr..." VerticalOptions="End" FontSize="Small" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" />
+            <BoxView Color="Black" Opacity=".1" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4"/>
+            <Entry x:Name="OrderNumber" FontSize="Small" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" />
+            <Image Source="barcode.png" Grid.Row="6" Grid.Column="4" HorizontalOptions="Fill"
+             Grid.ColumnSpan="2" HeightRequest="30" WidthRequest="30"/>-->
+
+            <Label Text="Bifoga bild" FontSize="Small" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" VerticalTextAlignment="Center" />
+            <Image Source="cameratrans.png" Grid.Row="7" Grid.Column="2" HeightRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TakePhoto" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="gallerytrans.jpg" Grid.Row="7" Grid.Column="3" HeightRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="PickPhoto" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="ImageResult" Grid.Row="7" Grid.Column="4" HeightRequest="30" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnImageResultTapped"
+                        NumberOfTapsRequired="1"  />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <BoxView Color="Black" Opacity=".1" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <Editor x:Name="Message"
+                    Text="Your message" HeightRequest="120"
+                    FontSize="Small" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="6" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

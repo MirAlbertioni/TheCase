@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fac.Views.LoginPage"
+             Title="{Binding Title}">
+
+
+    <Grid VerticalOptions="Fill"
+        HorizontalOptions ="Fill"
+          Padding="20, 20, 20, 20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Image Source="logo.png" Grid.Row="0" Grid.Column="0" />
+
+        <Label Text="Username" FontSize="Small" Grid.Row="1" Grid.Column="0" />
+        <BoxView Color="SteelBlue" Opacity=".5" Grid.Row="2" Grid.Column="0"/>
+        <Entry x:Name="Username" Grid.Row="2" Grid.Column="0" />
+
+        <Label Text="Password" FontSize="Small" Grid.Row="3" Grid.Column="0" />
+        <BoxView Color="DarkGoldenrod" Opacity=".4" Grid.Row="4" Grid.Column="0"/>
+        <Entry x:Name="Password" Grid.Row="4" Grid.Column="0" />
+
+        <BoxView Color="Black"  Margin="0, 30, 0, 0" Opacity=".4" Grid.Row="5" Grid.Column="0"/>
+        <Button Grid.Row="5" TextColor="White" BackgroundColor="Transparent" Margin="0, 30, 0, 0" Grid.Column="0" Text="Login" Clicked="Login_Clicked" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.0-beta1" />
+    <PackageReference Include="LiveXAML" Version="2.1.45" />
+    <PackageReference Include="Microsoft.AppCenter" Version="2.6.2" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.6.2" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.6.2" />
+    <PackageReference Include="Refit" Version="4.6.48" />
+    <PackageReference Include="RestSharp" Version="106.5.4" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.168" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />  
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\ref\netcoreapp2.1\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ImagePopup.xaml.cs">
+      <DependentUpon>ImagePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\UnreadCasesPage.xaml.cs">
+      <DependentUpon>UnreadCasesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CasesPage.xaml.cs">
+      <DependentUpon>CasesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CaseDetailPage.xaml.cs">
+      <DependentUpon>CaseDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewCasePage.xaml.cs">
+      <DependentUpon>NewCasePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repository\" />
+  </ItemGroup>
+</Project>
